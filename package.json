@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Prime Number Generation",
   "scripts": {
-    "start": "npx tsc && node dist/main.js",
+    "start": "npx tsc && node dist/main.js 4 false",
+    "verify": "npx tsc && node dist/main.js 4 true 2 30",
     "test": "jest"
   },
   "keywords": [],
