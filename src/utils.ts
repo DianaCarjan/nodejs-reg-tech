@@ -1,10 +1,12 @@
 export const generatePrimes = (start: number, end: number): number[] => {
   let localPrimes: number[] = [];
+  
   for (let i = start; i < end; i++) {
     if (isPrime(i)) {
       localPrimes.push(i);
     }
   }
+
   return localPrimes;
 };
 

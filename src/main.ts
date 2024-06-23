@@ -2,7 +2,7 @@ import { Worker, isMainThread, parentPort, workerData } from "worker_threads";
 import { generatePrimes, generatePrimesSequentially } from "./utils";
 import os from "os";
 
-export const parallelPrimes = (
+const parallelPrimes = (
   workersCount: number,
   min: number,
   range: number
@@ -10,7 +10,6 @@ export const parallelPrimes = (
   return new Promise((resolve, reject) => {
     const slice = Math.ceil(range / workersCount);
 
-    const workers = [];
     let primes: number[] = [];
     let completed = 0;
 
@@ -39,8 +38,6 @@ export const parallelPrimes = (
         if (code !== 0)
           reject(new Error(`Worker stopped with exit code ${code}`));
       });
-
-      workers.push(worker);
     }
   });
 };
@@ -83,4 +80,5 @@ const verify = process.argv[3] === "true" || false;
 const min = parseInt(process.argv[4]) || 2;
 const range = parseInt(process.argv[5]) || 1e7;
 
+// end = min + range
 main(verify, min, range);
